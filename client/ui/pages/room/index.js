@@ -1,24 +1,24 @@
-Template.pageChat.helpers({
+Template.pageRoom.helpers({
 	messages: function() {
 		return Messages.find({}).fetch();
 	}
 });
 
-Template.pageChat.onRendered(function() {
+Template.pageRoom.onRendered(function() {
 	Materialize.updateTextFields();
 });
 
-Template.pageChat.events({
+Template.pageRoom.events({
 	'submit .formMessage': function(event) {
 		event.preventDefault();
 
+		const roomId = FlowRouter.getParam("roomId");
 		const data = {
-			text: event.target.messageText.value
+			text: event.target.messageText.value,
+			roomId: roomId
 		}
 
 		Meteor.call('messages.insert', data, function(err) {
-			console.log(err);
-
 			if(err) {
 				Materialize.toast(err.message, 4000, 'red')
 			} else {

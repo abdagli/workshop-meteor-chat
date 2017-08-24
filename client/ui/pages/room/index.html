@@ -1,0 +1,27 @@
+<template name="pageRoom">
+	<div class="row">
+		<div class="col s12">
+				<ul class="collection">
+					{{#each messages}}
+					<li class="collection-item avatar">
+						<i class="material-icons circle">message</i>
+						<span class="title">Herhangi Biri</span>
+						<p>{{text}}</p>
+					</li>
+					{{/each}}
+				</ul>
+		</div>
+	</div>
+
+	<form class="formMessage">
+		<div class="row">
+			<div class="input-field col s11">
+				<input autocomplete="off" placeholder="" id="messageText" type="text" class="validate">
+				<label for="messageText">Send Message</label>
+			</div>
+			<div class="col s1">
+				<button type="submit" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">send</i></button>
+			</div>
+		</div>
+	</form>
+</template>
