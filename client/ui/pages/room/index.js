@@ -6,6 +6,13 @@ Template.pageRoom.helpers({
 
 Template.pageRoom.onRendered(function() {
 	Materialize.updateTextFields();
+
+	const messagesCursor = Messages.find({});
+	messagesCursor.observeChanges({
+		added: function() {
+			$(document).scrollTop( $("#lastMessage").offset().top );  
+		}
+	});
 });
 
 Template.pageRoom.events({
