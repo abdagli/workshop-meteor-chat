@@ -9,7 +9,7 @@ Template.pageRoom.onRendered(function() {
 });
 
 Template.pageRoom.events({
-	'submit .formMessage': function(event) {
+	'submit .formMessage': function(event, instance) {
 		event.preventDefault();
 
 		const roomId = FlowRouter.getParam("roomId");
@@ -23,6 +23,7 @@ Template.pageRoom.events({
 				Materialize.toast(err.message, 4000, 'red')
 			} else {
 				Materialize.toast('Mesajiniz eklendi', 4000, 'green');
+				instance.find('#messageText').value = '';
 			}
 		});
 	}
